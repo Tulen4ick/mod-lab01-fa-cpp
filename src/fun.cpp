@@ -1,6 +1,6 @@
 // Copyright 2022 UNN-IASR
-#include "fun.h"
 #include <iostream>
+#include "fun.h"
 #include "cmath"
 #include <cctype>
 
@@ -22,7 +22,8 @@ unsigned int faStr1(const char *str) {
             if (str[i] >= '0' && str[i] <= '9' && without_numbers) {
                 without_numbers = false;
             }
-            if ((str[i + 1] == ' ' || str[i + 1] == '\0') && in_word && without_numbers) {
+            if ((str[i + 1] == ' ' || str[i + 1] == '\0') 
+            && in_word && without_numbers) {
                 words_without_numbers++;
             }
         }
@@ -52,7 +53,8 @@ unsigned int faStr2(const char *str) {
                     small_letters_only = false;
                 }
             }
-            if ((str[i + 1] == ' ' || str[i + 1] == '\0') && in_word && small_letters_only) {
+            if ((str[i + 1] == ' ' || str[i + 1] == '\0') 
+            && in_word && small_letters_only) {
                 normal_words++;
             }
         }
@@ -60,8 +62,7 @@ unsigned int faStr2(const char *str) {
     return normal_words;
 }
 
-unsigned int faStr3(const char *str)
-{
+unsigned int faStr3(const char *str) {
     if (str == nullptr) {
         return 0;
     }
