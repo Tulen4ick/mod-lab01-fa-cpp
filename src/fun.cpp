@@ -1,28 +1,28 @@
 // Copyright 2022 UNN-IASR
 #include "fun.h"
 #include <iostream>
+#include "cmath"
 
-unsigned int faStr1(const char *str)
-{
-    if (str == nullptr){
+unsigned int faStr1(const char *str) {
+    if (str == nullptr) {
         return 0;
     }
     bool in_word = false;
     bool without_numbers = true;
     int words_without_numbers = 0;
-    for (size_t i = 0; str[i] != '\0'; ++i){
-        if (str[i] == ' '){
+    for (size_t i = 0; str[i] != '\0'; ++i) {
+        if (str[i] == ' ') {
             in_word = false;
             without_numbers = true;
         }
         else{
-            if (!in_word){
+            if (!in_word) {
                 in_word = true;
             }
-            if (str[i] >= '0' && str[i] <= '9' && without_numbers){
+            if (str[i] >= '0' && str[i] <= '9' && without_numbers) {
                 without_numbers = false;
             }
-            if ((str[i + 1] == ' ' || str[i + 1] == '\0') && in_word && without_numbers){
+            if ((str[i + 1] == ' ' || str[i + 1] == '\0') && in_word && without_numbers) {
                 words_without_numbers++;
             }
         }
@@ -30,21 +30,20 @@ unsigned int faStr1(const char *str)
     return words_without_numbers;
 }
 
-unsigned int faStr2(const char *str)
-{
-    if (str == nullptr){
+unsigned int faStr2(const char *str) {
+    if (str == nullptr) {
         return 0;
     }
     bool in_word = false;
     bool small_letters_only = true;
     int normal_words = 0;
-    for (size_t i = 0; str[i] != '\0'; ++i){
-        if (str[i] == ' '){
+    for (size_t i = 0; str[i] != '\0'; ++i) {
+        if (str[i] == ' ') {
             in_word = false;
             small_letters_only = true;
         }
         else{
-            if (!in_word){
+            if (!in_word) {
                 in_word = true;
                 if(str[i] < 'A' || str[i] > 'Z'){
                     small_letters_only = false;
