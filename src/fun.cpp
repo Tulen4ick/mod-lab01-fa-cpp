@@ -2,6 +2,7 @@
 #include "fun.h"
 #include <iostream>
 #include "cmath"
+#include <cctype>
 
 unsigned int faStr1(const char *str) {
     if (str == nullptr) {
@@ -14,8 +15,7 @@ unsigned int faStr1(const char *str) {
         if (str[i] == ' ') {
             in_word = false;
             without_numbers = true;
-        }
-        else{
+        } else {
             if (!in_word) {
                 in_word = true;
             }
@@ -41,20 +41,18 @@ unsigned int faStr2(const char *str) {
         if (str[i] == ' ') {
             in_word = false;
             small_letters_only = true;
-        }
-        else{
+        } else {
             if (!in_word) {
                 in_word = true;
-                if(str[i] < 'A' || str[i] > 'Z'){
+                if (str[i] < 'A' || str[i] > 'Z') {
                     small_letters_only = false;
                 }
-            } 
-            else{
-                if(str[i] < 'a' || str[i] > 'z'){
+            } else {
+                if (str[i] < 'a' || str[i] > 'z') {
                     small_letters_only = false;
                 }
             }
-            if ((str[i + 1] == ' ' || str[i + 1] == '\0') && in_word && small_letters_only){
+            if ((str[i + 1] == ' ' || str[i + 1] == '\0') && in_word && small_letters_only) {
                 normal_words++;
             }
         }
@@ -64,25 +62,24 @@ unsigned int faStr2(const char *str) {
 
 unsigned int faStr3(const char *str)
 {
-    if (str == nullptr){
+    if (str == nullptr) {
         return 0;
     }
     bool in_word = false;
     int number_of_letters = 0;
     int number_of_words = 0;
-    for (size_t i = 0; str[i] != '\0'; ++i){
-        if (str[i] == ' '){
+    for (size_t i = 0; str[i] != '\0'; ++i) {
+        if (str[i] == ' ') {
             in_word = false;
-        }
-        else{
-            if (!in_word){
+        } else {
+            if (!in_word) {
                 in_word = true;
             }
             number_of_letters++;
-            if ((str[i + 1] == ' ' || str[i + 1] == '\0') && in_word){
+            if ((str[i + 1] == ' ' || str[i + 1] == '\0') && in_word) {
                 number_of_words++;
             }
         }
     }
-    return round(double(number_of_letters) / double(number_of_words));
+    return std::round(static_cast<double>(number_of_letters) / number_of_words);
 }
